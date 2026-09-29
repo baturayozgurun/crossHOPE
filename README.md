@@ -13,7 +13,7 @@ This is version 1 of the project. Its goal was to **validate the architecture** 
 **spatio-temporal** model.
 
 ![Pose estimation demo](assets/pose_demo.png)
-*Validation frame never seen in training (HOPE-Video scene 0003, frame 0017). Top: input and estimated poses
+*Validation frame never seen in training. Top: input and estimated poses
 (3D models rendered as translucent masks, axes X red / Y green / Z blue). Bottom: model surface points at the
 estimated pose, and a 3D view of the measured point cloud with the estimated models.*
 
