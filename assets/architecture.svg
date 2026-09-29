@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 600" width="1240" height="600" role="img"
+ aria-label="Architecture: RGB and depth crops are encoded by DINOv3 and a sparse 3D CNN, voxel centers are projected into the RGB crop for 2D positional encoding, four fusion layers combine them, and a pose head outputs R and t."
+ font-family="DejaVu Sans, Segoe UI, Helvetica, Arial, sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="context-stroke"/></marker></defs>
+<rect width="1240" height="600" fill="#fcfcfb"/>
+<text x="185" y="84" text-anchor="start" font-size="15" font-weight="700" fill="#2a78d6">RGB branch</text>
+<text x="185" y="548" text-anchor="start" font-size="15" font-weight="700" fill="#eb6834">Depth branch</text>
+<rect x="10" y="230" width="145" height="160" rx="10" fill="#ffffff" stroke="#898781" stroke-width="2"/>
+<text x="82.5" y="272.0" text-anchor="middle" font-size="17" font-weight="700" fill="#0b0b0b">Input</text>
+<text x="82.5" y="294.0" text-anchor="middle" font-size="15" font-weight="400" fill="#52514e">RGB-D frame</text>
+<text x="82.5" y="316.0" text-anchor="middle" font-size="15" font-weight="400" fill="#52514e">640 × 480</text>
+<text x="82.5" y="338.0" text-anchor="middle" font-size="15" font-weight="400" fill="#52514e">object center</text>
+<text x="82.5" y="360.0" text-anchor="middle" font-size="15" font-weight="400" fill="#52514e">(± 2 cm) + class</text>
+<rect x="185" y="100" width="155" height="95" rx="10" fill="#eef4fc" stroke="#2a78d6" stroke-width="2"/>
+<text x="262.5" y="131.5" text-anchor="middle" font-size="17" font-weight="700" fill="#0b0b0b">RGB crop</text>
+<text x="262.5" y="153.5" text-anchor="middle" font-size="15" font-weight="400" fill="#52514e">224 × 224</text>
+<text x="262.5" y="175.5" text-anchor="middle" font-size="15" font-weight="400" fill="#52514e">homography warp</text>
+<rect x="185" y="425" width="155" height="95" rx="10" fill="#fdf0ea" stroke="#eb6834" stroke-width="2"/>
+<text x="262.5" y="456.5" text-anchor="middle" font-size="17" font-weight="700" fill="#0b0b0b">Point crop</text>
+<text x="262.5" y="478.5" text-anchor="middle" font-size="15" font-weight="400" fill="#52514e">12 cm sphere</text>
+<text x="262.5" y="500.5" text-anchor="middle" font-size="15" font-weight="400" fill="#52514e">≤ 20k points</text>
+<path d="M 155,270 L 170,270 L 170,147 L 183,147" fill="none" stroke="#52514e" stroke-width="2" marker-end="url(#a)"/>
+<path d="M 155,350 L 170,350 L 170,472 L 183,472" fill="none" stroke="#52514e" stroke-width="2" marker-end="url(#a)"/>
+<rect x="370" y="95" width="195" height="105" rx="10" fill="#eef4fc" stroke="#2a78d6" stroke-width="2"/>
+<text x="467.5" y="120.5" text-anchor="middle" font-size="17" font-weight="700" fill="#0b0b0b">DINOv3 ViT-S+/16</text>
+<text x="467.5" y="142.5" text-anchor="middle" font-size="15" font-weight="400" fill="#52514e">frozen, bf16</text>
+<text x="467.5" y="164.5" text-anchor="middle" font-size="15" font-weight="400" fill="#52514e">patch 16 → 196 tokens</text>
+<text x="467.5" y="186.5" text-anchor="middle" font-size="15" font-weight="400" fill="#52514e">384-d</text>
+<rect x="370" y="420" width="195" height="105" rx="10" fill="#fdf0ea" stroke="#eb6834" stroke-width="2"/>
+<text x="467.5" y="445.5" text-anchor="middle" font-size="17" font-weight="700" fill="#0b0b0b">Voxelize</text>
+<text x="467.5" y="467.5" text-anchor="middle" font-size="15" font-weight="400" fill="#52514e">4 mm voxels</text>
+<text x="467.5" y="489.5" text-anchor="middle" font-size="15" font-weight="400" fill="#52514e">60 × 60 × 60 grid</text>
+<text x="467.5" y="511.5" text-anchor="middle" font-size="15" font-weight="400" fill="#52514e">offset + occupancy</text>
+<path d="M 340,147 L 368,147" fill="none" stroke="#52514e" stroke-width="2" marker-end="url(#a)"/>
+<path d="M 340,472 L 368,472" fill="none" stroke="#52514e" stroke-width="2" marker-end="url(#a)"/>
+<rect x="595" y="100" width="160" height="95" rx="10" fill="#eef4fc" stroke="#2a78d6" stroke-width="2"/>
+<text x="675.0" y="131.5" text-anchor="middle" font-size="17" font-weight="700" fill="#0b0b0b">Linear + LN</text>
+<text x="675.0" y="153.5" text-anchor="middle" font-size="15" font-weight="400" fill="#52514e">196 image tokens</text>
+<text x="675.0" y="175.5" text-anchor="middle" font-size="15" font-weight="400" fill="#52514e">+ 2D pos. enc.</text>
+<rect x="595" y="415" width="160" height="115" rx="10" fill="#fdf0ea" stroke="#eb6834" stroke-width="2"/>
+<text x="675.0" y="445.5" text-anchor="middle" font-size="17" font-weight="700" fill="#0b0b0b">Sparse 3D CNN</text>
+<text x="675.0" y="467.5" text-anchor="middle" font-size="15" font-weight="400" fill="#52514e">ResNet, spconv v2</text>
+<text x="675.0" y="489.5" text-anchor="middle" font-size="15" font-weight="400" fill="#52514e">32 → 64 → 128 ch</text>
+<text x="675.0" y="511.5" text-anchor="middle" font-size="15" font-weight="400" fill="#52514e">M voxel tokens</text>
+<path d="M 565,147 L 593,147" fill="none" stroke="#52514e" stroke-width="2" marker-end="url(#a)"/>
+<path d="M 565,472 L 593,472" fill="none" stroke="#52514e" stroke-width="2" marker-end="url(#a)"/>
+<rect x="595" y="262" width="160" height="95" rx="10" fill="#efedf8" stroke="#4a3aa7" stroke-width="2"/>
+<text x="675.0" y="293.5" text-anchor="middle" font-size="17" font-weight="700" fill="#0b0b0b">Project voxel</text>
+<text x="675.0" y="315.5" text-anchor="middle" font-size="15" font-weight="400" fill="#52514e">centers into crop</text>
+<text x="675.0" y="337.5" text-anchor="middle" font-size="15" font-weight="400" fill="#52514e">→ 2D pos. enc.</text>
+<path d="M 675,415 L 675,359" fill="none" stroke="#52514e" stroke-width="2" marker-end="url(#a)"/>
+<text x="683" y="392" text-anchor="start" font-size="13" font-weight="400" fill="#4a3aa7">voxel centers</text>
+<path d="M 262,195 L 262,310 L 593,310" fill="none" stroke="#4a3aa7" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#a)"/>
+<text x="428" y="302" text-anchor="middle" font-size="13" font-weight="400" fill="#4a3aa7">crop camera matrix K</text>
+<rect x="835" y="8" width="170" height="54" rx="8" fill="#e8f7f1" stroke="#1baf7a" stroke-width="2"/>
+<text x="920.0" y="30.0" text-anchor="middle" font-size="17" font-weight="700" fill="#0b0b0b">Pose query</text>
+<text x="920.0" y="52.0" text-anchor="middle" font-size="15" font-weight="400" fill="#52514e">+ class embedding</text>
+<rect x="800" y="80" width="240" height="500" rx="14" fill="#f4f3ef" stroke="#898781" stroke-width="2"/>
+<rect x="815" y="100" width="210" height="120" rx="10" fill="#ffffff" stroke="#898781" stroke-width="2"/>
+<text x="920.0" y="133.0" text-anchor="middle" font-size="17" font-weight="700" fill="#0b0b0b">Cross-attention</text>
+<text x="920.0" y="155.0" text-anchor="middle" font-size="15" font-weight="400" fill="#52514e">Q: pose query +</text>
+<text x="920.0" y="177.0" text-anchor="middle" font-size="15" font-weight="400" fill="#52514e">voxel tokens</text>
+<text x="920.0" y="199.0" text-anchor="middle" font-size="15" font-weight="400" fill="#52514e">K, V: image tokens</text>
+<rect x="815" y="255" width="210" height="100" rx="10" fill="#ffffff" stroke="#898781" stroke-width="2"/>
+<text x="920.0" y="278.0" text-anchor="middle" font-size="17" font-weight="700" fill="#0b0b0b">Self-attention</text>
+<text x="920.0" y="300.0" text-anchor="middle" font-size="15" font-weight="400" fill="#52514e">query + voxel tokens</text>
+<text x="920.0" y="322.0" text-anchor="middle" font-size="15" font-weight="400" fill="#52514e">3D pos. enc. of</text>
+<text x="920.0" y="344.0" text-anchor="middle" font-size="15" font-weight="400" fill="#52514e">voxel centers</text>
+<rect x="815" y="390" width="210" height="70" rx="10" fill="#ffffff" stroke="#898781" stroke-width="2"/>
+<text x="920.0" y="420.0" text-anchor="middle" font-size="17" font-weight="700" fill="#0b0b0b">Feed-forward</text>
+<text x="920.0" y="442.0" text-anchor="middle" font-size="15" font-weight="400" fill="#52514e">256 → 1024 → 256</text>
+<path d="M 920,220 L 920,253" fill="none" stroke="#52514e" stroke-width="2" marker-end="url(#a)"/>
+<path d="M 920,355 L 920,388" fill="none" stroke="#52514e" stroke-width="2" marker-end="url(#a)"/>
+<path d="M 920,62 L 920,98" fill="none" stroke="#1baf7a" stroke-width="2" marker-end="url(#a)"/>
+<text x="920" y="500" text-anchor="middle" font-size="17" font-weight="700" fill="#0b0b0b">Fusion layer × 4</text>
+<text x="920" y="524" text-anchor="middle" font-size="15" font-weight="400" fill="#52514e">d = 256, 8 heads</text>
+<text x="920" y="546" text-anchor="middle" font-size="15" font-weight="400" fill="#52514e">pre-LN, residual, dropout 0.1</text>
+<path d="M 755,147 L 813,147" fill="none" stroke="#2a78d6" stroke-width="2" marker-end="url(#a)"/>
+<path d="M 755,310 L 772,310 L 772,178 L 813,178" fill="none" stroke="#4a3aa7" stroke-width="2" marker-end="url(#a)"/>
+<path d="M 755,450 L 788,450 L 788,205 L 813,205" fill="none" stroke="#eb6834" stroke-width="2" marker-end="url(#a)"/>
+<rect x="1075" y="100" width="155" height="110" rx="10" fill="#ffffff" stroke="#898781" stroke-width="2"/>
+<text x="1152.5" y="128.0" text-anchor="middle" font-size="17" font-weight="700" fill="#0b0b0b">Pose head</text>
+<text x="1152.5" y="150.0" text-anchor="middle" font-size="15" font-weight="400" fill="#52514e">on query token</text>
+<text x="1152.5" y="172.0" text-anchor="middle" font-size="15" font-weight="400" fill="#52514e">LN + MLP → 9</text>
+<text x="1152.5" y="194.0" text-anchor="middle" font-size="15" font-weight="400" fill="#52514e">6D rot. + offset</text>
+<rect x="1075" y="245" width="155" height="110" rx="10" fill="#ffffff" stroke="#898781" stroke-width="2"/>
+<text x="1152.5" y="273.0" text-anchor="middle" font-size="17" font-weight="700" fill="#0b0b0b">R, t</text>
+<text x="1152.5" y="295.0" text-anchor="middle" font-size="15" font-weight="400" fill="#52514e">R: 6D → 3 × 3</text>
+<text x="1152.5" y="317.0" text-anchor="middle" font-size="15" font-weight="400" fill="#52514e">t = crop center</text>
+<text x="1152.5" y="339.0" text-anchor="middle" font-size="15" font-weight="400" fill="#52514e">+ 0.12 m · offset</text>
+<rect x="1075" y="390" width="155" height="120" rx="10" fill="#ffffff" stroke="#898781" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="1152.5" y="423.0" text-anchor="middle" font-size="17" font-weight="700" fill="#0b0b0b">Training loss</text>
+<text x="1152.5" y="445.0" text-anchor="middle" font-size="15" font-weight="400" fill="#52514e">min over sym. S</text>
+<text x="1152.5" y="467.0" text-anchor="middle" font-size="15" font-weight="400" fill="#52514e">‖R − R<tspan baseline-shift='sub' font-size='11'>gt</tspan>·S‖²</text>
+<text x="1152.5" y="489.0" text-anchor="middle" font-size="15" font-weight="400" fill="#52514e">+ ‖t − t<tspan baseline-shift='sub' font-size='11'>gt</tspan>‖₁ (cm)</text>
+<path d="M 1040,425 L 1057,425 L 1057,155 L 1073,155" fill="none" stroke="#52514e" stroke-width="2" marker-end="url(#a)"/>
+<path d="M 1152,210 L 1152,243" fill="none" stroke="#52514e" stroke-width="2" marker-end="url(#a)"/>
+<path d="M 1152,355 L 1152,388" fill="none" stroke="#52514e" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#a)"/>
+</svg>
