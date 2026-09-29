@@ -1,7 +1,7 @@
 # CrossHOPE: Multi-Modal RGB-D Cross-Attention Fusion Network for 6D Object Pose Estimation Targeting Physical AI Applications
 
-[!NOTE]
-This public repository currently contains only the README file. The full source code is maintained in a private repository.
+> [!NOTE]
+> This public repository currently contains only the README file. The full source code is maintained in a private repository.
 
 A compact RGB-D network that estimates the full 6D pose (3D rotation + 3D translation) of known household
 objects. A frozen **DINOv3** vision transformer reads the color image, a **sparse 3D CNN (spconv v2)** reads
